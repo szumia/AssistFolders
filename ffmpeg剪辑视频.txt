@@ -1,0 +1,21 @@
+剪辑指定时间段的视频：假设您要剪辑视频的时间段为00:30到01:30。
+ffmpeg -i input.avi -ss 00:30:00 -to 01:30:00 -c:v copy -c:a copy output.avi
+ffmpeg -i input.avi -ss 00:30:00 -to 01:30:00 -c:v copy -c:a copy output.avi
+这将从input.avi视频文件中提取从00:30:00到01:30:00的时间段，并将剪辑后的视频保存为output.avi。
+ -ss参数用于指定剪辑的起始时间，-to参数用于指定剪辑的结束时间。
+-c:v copy和-c:a copy用于直接复制视频和音频流，以保持剪辑后的视频质量。
+
+
+
+剪辑指定时长的视频：假设您要剪辑视频的时长为5分钟。
+ffmpeg -i input.avi -t 00:05:00 -c:v copy -c:a copy output.avi
+
+
+剪辑指定帧数的视频：假设您要剪辑视频的帧数为500帧。
+ffmpeg -i input.avi -vframes 500 -c:v copy -c:a copy output.avi
+
+
+在FFmpeg中，时间格式为"时:分:秒.毫秒"。所以，如果您使用以下命令进行剪辑
+如果您需要指定毫秒级别的时间，可以使用小数点后三位表示毫秒，例如"00:00:10.500"表示10秒500毫秒。
+
+ffmpeg -i input.webm -c:v copy -c:a aac -strict experimental output.mp4

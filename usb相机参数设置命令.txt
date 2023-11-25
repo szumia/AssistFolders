@@ -1,0 +1,7 @@
+sudo apt install v4l-utils安装v4l包
+
+如果模组相机调不了曝光
+v4l2-ctl -d /dev/video0 -c exposure_auto=0把自动曝光关了，就行了
+
+v4l2-ctl -d /dev/video0 --list-ctrls可以查看能修改的参数然后-c 参数名 数值 修改
+如果=0报错的话就改成=1

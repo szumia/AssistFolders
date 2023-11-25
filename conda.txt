@@ -1,0 +1,217 @@
+
+
+jupyter notebook
+anaconda-navigator
+https://www.jianshu.com/p/eaee1fadc1e9
+
+
+conda配源
+https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+
+创建、激活、退出环境
+（1）创建虚拟环境
+    conda create -n env_name（环境名称） python=3.7(对应的python版本号）
+ 
+（2）激活虚拟环境
+    conda activate env_name（环境名称）
+ 
+（3）退出虚拟环境
+    deactivate env_name（环境名称）
+ 
+（4）删除虚拟环境
+    conda remove -n env_name(环境名称) --all
+查看已创建的虚拟环境
+conda env list  或 conda info -e  或  conda info --env
+修改某个虚拟环境的名字
+anaconda中没有重命名的命令，使用克隆删除的方法
+
+（1）进入旧环境
+conda activate old_name
+ 
+（2）克隆旧环境
+conda create -n new_name --clone old_name
+ 
+（3）退出旧环境
+conda deactivate
+ 
+（4）删除旧环境
+conda remove -n old_name --all
+
+查看conda的信息
+conda info
+想要修改创建虚拟环境的默认位置：anaconda如何修改虚拟环境的名称_修改python虚拟环境路径（https://blog.csdn.net/weixin_39574140/article/details/110606076）
+
+查看当前python版本
+python -V  #注意V是大写
+conda的环境管理
+　　conda info -e  　　　　　　　　　　　　查看当前已安装的环境
+　　conda create -n py27 python=2.7  　添加2.7版本的Python环境
+　　activate py27  　　　　　　　　　　切换到Python2.7环境
+　　conda deactivate  　　　　　　　　　　　 返回默认的Python环境
+　　conda remove -n py27 --all   　　　　 删除已安装的Python环境
+anaconda的包管理，类似Python的pip
+    conda list　　　　　　　　　　　　　　查看当前环境下已安装的包
+    conda list -n py27　　　　　　　　　 查看指定环境的已安装的包
+    conda search selenium　　　　　　　 查找package信息
+    conda install -n py27 selenium  指定环境安装package，不加-n则安装在当前活跃环境
+    conda update -n py27 selenium   指定环境更新package，不加-n则更新在当前活跃环境
+    conda remove -n py27 selenium   删除package，不加-n则删除在当前活跃环境
+    conda clean --all               清理（应该是pkgs文件下的）安装包缓存
+conda将conda、python等都视为package，因此可以使用conda管理conda和python的版本
+
+　　conda update conda  　 更新conda
+　　conda update anaconda  更新anaconda
+　　conda update python   更新python，假设当前环境是3.6，则更新3.6.x系列版本
+安装包
+conda install package_name 比较安全
+
+也可以像python中使用的  pip  package_name
+
+conda clean的使用
+anaconda3在创建虚拟环境中途出错，想要删掉，如何删彻底（https://blog.csdn.net/qq_44868807/article/details/106399893）
+
+
+修改虚拟环境名称的两种方法（https://blog.csdn.net/weixin_45348389/article/details/108359890）
+Anaconda/jupyter notebook修改虚拟环境名称
+
+ 安装指定版本的包
+（1）若环境中有其他版本的，先卸载
+conda uninstall h5py   （以h5py为例）
+conda install h5py==2.10.0   再安装指定版本的
+
+（2）直接安装指定版本的
+conda install h5py==2.10.0
+————————————————
+版权声明：本文为CSDN博主「ligous」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/ligous/article/details/124209700
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(一)ubuntu安装anaconda后默认不进入conda环境方法
+安装conda后取消命令行前出现的base，则默认进入了conda环境，如果想取消每次启动自动激活conda的基础环境。
+
+方法一
+每次在命令行通过conda deactivate退出base环境回到系统自带的环境
+如果再进入的话：conda deactivate
+
+
+方法二
+1，通过将auto_activate_base参数设置为false实现：
+conda config --set auto_activate_base false
+2，那要进入的话通过
+conda activate base
+3，如果反悔了还是希望base一直留着的话通过conda config --set auto_activate_base true来恢复
+conda config --set auto_activate_base true
+
+
+方法三
+通过修改.bashrc
+把export PATH="~/anaconda/bin:$PATH"
+修改为export PATH="$PATH：~/anaconda/bin"
+这样每次登陆服务器的时候都会首先找系统自身的python路径，不会进入conda环境。
+————————————————
+版权声明：本文为CSDN博主「tudoukaihua」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/tudoukaihua/article/details/127651234
+
+
+（二）
+查看CUDA版本：
+nvcc --version
+查看NVIDIA驱动版本
+nvidia-smi
+
+
+切换不同版本的CUDA
+安装其他版本的cuda，过程如上，但在需要切换使用的cuda版本时，需要对环境变量进行修改
+具体操作为：
+输入
+$ export PATH=/usr/local/cuda-xx.x/bin${PATH:+:${PATH}}
+$ export LD_LIBRARY_PATH=/usr/local/cuda-xx.x/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+$ source ~/.bashrc
+————————————————
+版权声明：本文为CSDN博主「火锅店的保安长」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/m0_73860872/article/details/127276979
+
+
+
+（三）(环境改名)
+naconda允许您更改已经创建的环境的名称。以下是如何更改Anaconda环境名称的步骤：
+步骤1：激活原始环境
+在更改环境名称之前，请确保激活原始环境。假设您想要更改名称的环境的原始名称为oldenv，首先激活该环境：
+conda activate oldenv
+
+步骤2：创建新环境
+您需要创建一个新的环境，并为其指定新的名称。假设您想将环境从oldenv改为newenv，使用以下命令创建新环境：
+conda create --name newenv --clone oldenv
+这将复制oldenv环境并创建一个名为newenv的新环境。
+
+步骤3：删除原始环境
+一旦新环境创建成功，您可以选择删除原始环境（oldenv），如果您不再需要它。请谨慎操作，因为删除后无法恢复。
+conda env remove --name oldenv
+
+步骤4：激活新环境
+激活新环境：
+conda activate newenv
+现在，您已经成功更改了Anaconda环境的名称。请确保更新任何项目或脚本，以便使用新的环境名称。
+
+
+
+
+（四）社区渠道下载
+conda install -c conda-forge labelme（包名）  / conda config --append channels conda-forge
+conda-forge是一个社区维护的Conda渠道，它提供了许多开源软件包的更新版本。在安装LabelMe之前，请确保已经配置了conda-forge渠道。如果没有配置，请使用以下命令添加它：
+conda config --add channels conda-forge
+sklearn加速：
+
+(五)trensflow版本对应表
+设置环境变量：
+在虚拟环境中，您需要设置环境变量，以告诉CUDA在哪里查找所需的库和二进制文件。假设CUDA已经正确安装在系统上，您可以通过设置以下环境变量来让虚拟环境识别到CUDA：
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda/bin:$PATH
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#installing-previous-cuda-releases
+
+在特定 CUDA 版本下发布的所有 Conda 软件包都标有该发布版本。要安装以前的版本，请在"install"命令中包含该标签，例如：
+conda install cuda -c nvidia/label/cuda-11.3.0
+trensflow软件包位置
+Python 3.8（支持 GPU）	https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-2.6.0-cp38-cp38-manylinux2010_x86_64.whl
+版本			Python 版本		编译器		构建工具	cuDNN	CUDA
+tensorflow-2.5.0	3.6-3.9	   		GCC 7.3.1	Bazel 3.7.2	8.1	11.2
+keras
+pytorch
+scikit-learn              1.3.0
+https://tensorflow.google.cn/install/source?hl=zh-cn
+
+
+(六)
+pip 换源阿里pip镜像
+pip config set global.index-url https://mirrors.aliyun.com/pypi
+
+
+
+
+
+
+
+
+
+
+
+

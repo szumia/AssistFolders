@@ -1,0 +1,5 @@
+1.删除 ~/.config 、~/.cache、 ~/.local/share/里面的同名ide包， 如Clion-2023.2.2
+
+2.修改脚本对应vmoptions，执行脚本后这些文件里面路径可能是乱码，要把最后的路径设为你放置的脚本路径，
+
+3.sudo gedit /etc/profile添加vmoptions路径,比如安装的是pycharm就添加 export PYCHARM_VM_OPTIONS=/home/mia/jetbra/vmoptions/pycharm.vmoptions

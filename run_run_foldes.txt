@@ -1,0 +1,10 @@
+sudo chmod 777 .run文件
+./文件  运行
+
+
+#set cuda environment path
+export PATH=/usr/local/cuda-12.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+

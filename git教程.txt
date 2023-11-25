@@ -1,0 +1,22 @@
+https://www.liaoxuefeng.com/wiki/896043488029600
+
+
+#sign in git in local
+git config --global user.name "Your Name"
+git config --global user.email "email@example.com"
+
+#add files to local
+git init
+git add file1.txt
+git add file2.txt file3.txt
+git commit -m "add 3 files."
+
+#push to github
+#first you need creat a new repository on github
+#then push an existing repository from the command line
+git remote add origin git@github.com:szumia/hikrCameraDemo.git
+git branch -M main
+git push -u origin main
+
+github双重认证：
+https://juejin.cn/post/7270127391476105276

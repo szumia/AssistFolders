@@ -1,0 +1,5 @@
+vscode的json配置
+https://blog.csdn.net/weixin_43687811/article/details/122744673
+
+vscode配置ros的json
+https://www.guyuehome.com/35422

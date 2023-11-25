@@ -1,0 +1,47 @@
+chatchatgpt
+https://chatchatgpt.com/?q=AeKjd7shrptaKyTLZ2USztvv
+
+新华云
+https://newhua99.com/
+琉璃酸酸
+https://www.liulisuansuan.com/
+
+https://board.gtk.pw/
+https://www.varhost.cc/user
+
+https://bulink.xyz/
+这个没试过，不知道行不行
+
+sockboom
+sockboom.lol
+
+https://sockboom.site/auth/register?affid=177284
+
+
+https://www.jianshu.com/p/02e3e8ccfe80
+clsh 代理服务器添加与关闭
+查看代理
+env | grep -i proxy
+删除相关代理 
+先设置文件为可写状态
+sudo chmod -R 777 /etc/environment
+
+gedit /etc/enviroment
+添加代理
+http_proxy=http://127.0.0.1:7890/
+https_proxy=http://127.0.0.1:7890/
+ftp_proxy=http://127.0.0.1:7890/
+HTTP_PROXY=http://127.0.0.1:7890/
+HTTPS_PROXY=http://127.0.0.1:7890/
+FTP_PROXY=http://127.0.0.1:7890/
+
+设置为只读状态
+sudo chmod 444 /etc/environment
+
+
+
+
+
+
+
+
