@@ -203,6 +203,7 @@ https://tensorflow.google.cn/install/source?hl=zh-cn
 (六)
 pip 换源阿里pip镜像
 pip config set global.index-url https://mirrors.aliyun.com/pypi
+pip 换源清华pip镜像
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 
