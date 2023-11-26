@@ -205,6 +205,9 @@ pip 换源阿里pip镜像
 pip config set global.index-url https://mirrors.aliyun.com/pypi
 pip 换源清华pip镜像
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+换回国外默认源
+pip config set global.index-url https://pypi.python.org/simple
+
 
 pip清除缓存
 pip cache purge
