@@ -1,7 +1,8 @@
 显卡驱动安装
 https://blog.csdn.net/Perfect886/article/details/119109380
 
-
+每隔3s刷新一次显卡信息
+watch -n 3 nvidia-smi
 
 
 
