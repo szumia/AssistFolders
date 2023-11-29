@@ -213,7 +213,11 @@ pip清除缓存
 pip cache purge
 
 
-
+pip报错：
+ERROR：python setup.py egg_info did not run successfully.
+Solution:
+$pip install --upgrade pip setuptools==57.5.0
+$pip install {package}
 
 
 
