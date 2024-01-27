@@ -1,0 +1,34 @@
+mkdir build
+cd build
+ls
+"不为空 则运行 sudo rm -r *"
+sudo cmake ..    、、//默认生成debug程序
+sudo make -j8
+./程序名		//运行
+
+
+Shfit+P 搜索c++ 选“Add Debug Configuration” 
+配置“includePath”  如“usr/local/include/opencv4/**”
+
+cmake ..    			   
+cmake -DCMAKE_BUILD_TYPE=Release ..  //指定生成release程序
+cmake -DCMAKE_BUILD_TYPE=Debug ..  //指定生成debug程序
+或者在CMakeLists.txt中设置， cmake..自动生成对应程序
+SET(CMAKE_BUILD_TYPE "Debug”)
+or
+SET(CMAKE_BUILD_TYPE "Release")
+
+
+
+示例
+mkdir Release
+cd Release
+ls
+"不为空 则运行 sudo rm -r *"
+sudo cmake -DCMAKE_BUILD_TYPE=Release ..  //指定生成release程序
+sudo make -j8
+./程序名
+
+
+ps aux | grep clion
+查看进程

@@ -1,0 +1,6 @@
+配置全局设置，一般是环境变量
+sudo gedit /etc/profile
+
+运行.run文件
+sudo chmod 777 .run文件
+./文件  运行

@@ -1,0 +1,421 @@
+ROS2API
+https://docs.ros2.org/latest/api/rclcpp/
+https://docs.ros2.org/latest/api/rclcpp_action/index.html
+配置Qos
+https://mp.weixin.qq.com/s/J63fO4c_QIseLGQd5W2fAw
+学习链接
+https://fishros.com/#/fish_home
+http://dev.ros2.fishros.com/doc/index.html
+http://dev.nav2.fishros.com/doc/getting_started/index.html
+http://wiki.ros.org/move_base?action=AttachFile&do=view&target=overview_tf.png
+
+
+
+话题适用于节点间单向的频繁的数据传输
+服务则适用于节点间双向的数据传递
+参数则用于动态调整节点的设置
+动作Action:
+目标：即Action客户端告诉服务端要做什么，服务端针对该目标要有响应。解决了不能确认服务端接收并处理目标问题
+反馈：即Action服务端告诉客户端此时做的进度如何（类似与工作汇报）。解决执行过程中没有反馈问题
+结果：即Action服务端最终告诉客户端其执行结果，结果最后返回，用于表示任务最终执行情况。
+Action是由话题和服务共同构建出来的（一个Action = 三个服务+两个话题） 
+三个服务分别是：1.目标传递服务 2.结果传递服务 3.取消执行服务 
+两个话题：1.反馈话题（服务发布，客户端订阅） 2.状态话题（服务端发布，客户端订阅）
+
+-------------------------------------------ros2常用指令---------------------------------------
+1.*****运行节点：
+ros2 run 包名 节点名
+
+运行任意节点时候可以通过CLI传递日志级别配置。
+ros2 run package-name node-name --ros-args --log-level debug
+
+2.******话题相关
+启动话题工具
+rqt_graph
+
+系统中当前活动的所有主题的列表
+ros2 topic list
+返回时增加消息类型
+ros2 topic list -t
+
+打印实时话题内容
+ros2 topic echo /Topic名
+
+查看主题信息
+ros2 topic info  /Topic名
+
+查看消息类型
+ros2 interface show 消息类型（如：std_msgs/msg/String）
+
+手动发布命令
+ros2 topic pub  /话题  消息 (如： /chatter std_msgs/msg/String 'data: "123"'）
+
+查询话题的Qos策略
+ros2 topic info /话题 --verbose
+
+3.*****服务相关
+查看服务列表
+ros2 service list
+手动调用服务，{}内是参数
+ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts "{a: 5,b: 10}"
+查看服务接口类型
+ros2 service type /add_two_ints
+查找使用某一接口的服务
+ros2 service find example_interfaces/srv/AddTwoInts
+
+4.*****接口相关（所有数据类型都可以解套为基本数据类型查看）
+查看某一个接口包下所有的接口，如传感器类的消息包sensor_msgs
+ros2 interface package sensor_msgs
+
+查看接口列表
+ros2 interface list
+
+查看某一个接口详细的内容
+ros2 interface show std_msgs/msg/String
+
+5*****参数相关
+查看所有节点参数名字
+ros2 param list
+
+详细查看一个参数的信息。
+ros2 param describe <node_name> <param_name>
+
+查看参数值
+ros2 param get /turtlesim background_b
+设置参数的值
+ros2 param set <node_name> <parameter_name> <value>
+需要留意的是，修改的参数值并没有被存储，只是临时修改。
+重新启动节点，依旧是以前的参数值。
+
+把参数存起来，文件被保存成了yaml格式
+(当去把当前的参数值拍一张快照，然后保存下来，后面可以用于恢复参数到当前的数值。）
+ros2 param dump <node_name> >xxx.yaml或者>>xxx.yaml
+>是覆盖，>>是追加写入
+
+通过param的load的方法把参数值恢复成我们之前存储的yaml参数
+ros2 param load  /turtlesim ./turtlesim.yaml
+
+执行run时就加载参数
+ros2 run <package_name> <executable_name> --ros-args --params-file <file_name>
+
+6*****Action相关
+获取目前系统中的action列表，在list后加入-t参数，即可看到action的类型
+ros2 action list
+
+查看action信息，看到action客户端和服务端的数量以及名字。
+ros2 action info /turtle1/rotate_absolute 
+
+发送actin请求到服务端，添加--feedback可以得到实时反馈
+ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 1.6}"
+
+
+7*****rosbag记录话题的数据
+录制
+ros2 bag record /topic-name
+记录多个话题的数据
+ros2 bag record topic-name1  topic-name2
+记录所有话题
+ros2 bag record -a
+-o name 自定义输出文件的名字
+ros2 bag record -o file-name topic-name
+查看文件信息
+ros2 bag info bag-file
+
+播放话题数据
+ros2 bag play xxx.db3
+打印话题数据
+ros2 topic echo /chatter
+倍速播放 -r.比如 -r 10,就是10倍速
+ros2 bag play rosbag2_2021_10_03-15_31_41_0.db3 -r 10
+-l 循环播放
+ros2 bag play rosbag2_2021_10_03-15_31_41_0.db3  -l
+播放单个话题
+ros2 bag play rosbag2_2021_10_03-15_31_41_0.db3 --topics /chatter
+
+
+-------------------------------------------ros2常用指令---------------------------------------
+
+
+
+-------------------------------------------ros2常用工具---------------------------------------
+1*****launch
+launch文件允许同时启动和配置多个包含 ROS 2 节点的可执行文件
+ROS2的launch文件有三种格式，python、xml、yaml。其中ROS2官方推荐的时python方式编写launch文件。
+ 创建功能包和launch文件
+
+
+
+
+-------------------------------------------ros2常用工具----------------------------------------
+
+
+
+-------------------------------------------ros2c++---------------------------------------
+创建工作空间
+cd d2lros2/chapt2/
+mkdir -p chapt2_ws/src/
+
+创建example_cpp功能包
+cd chapt2_ws/src
+ros2 pkg create example_cpp --build-type ament_cmake --dependencies rclcpp
+
+pkg create 是创建包的意思
+--build-type 用来指定该包的编译类型，一共有三个可选项ament_python、ament_cmake、cmake
+--dependencies 指的是这个功能包的依赖，这里小鱼给了一个ros2的C++客户端接口rclcpp
+创建完成后的目录结构如下：
+.
+└── src
+    └── example_cpp
+        ├── CMakeLists.txt
+        ├── include
+        │   └── example_cpp
+        ├── package.xml
+        └── src
+
+5 directories, 2 files
+
+
+
+ 修改CmakeLists
+add_executable(node_01 src/node_01.cpp)
+ament_target_dependencies(node_01 rclcpp)
+install(TARGETS
+  node_01
+  DESTINATION lib/${PROJECT_NAME}
+)
+PS::install TARGETS后面的是节点名称
+
+
+同一个包内创建更多节点，在src目录下创建cpp代码后， 修改CmakeLists
+add_executable(node_01 src/node_01.cpp)
+ament_target_dependencies(node_01 rclcpp)
+install(TARGETS
+  node_01
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+add_executable(node_03 src/node_03.cpp)
+ament_target_dependencies(node_03 rclcpp)
+install(TARGETS
+  node_03
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+注意:节点名字和project名字无关
+-------------------------------------------ros2c++---------------------------------------
+
+-------------------------------------------ros2py---------------------------------------
+创建工作空间
+cd chapt2/chapt2_ws/src/
+创建example_py功能包
+ros2 pkg create example_py  --build-type ament_python --dependencies rclpy
+
+创建完成后的目录结构
+.
+├── example_py
+│   └── __init__.py
+├── package.xml
+├── resource
+│   └── example_py
+├── setup.cfg
+├── setup.py
+└── test
+    ├── test_copyright.py
+    ├── test_flake8.py
+    └── test_pep257.py
+
+3 directories, 8 files
+
+在init_.py同级目录下创建py代码
+代码编写完成用Crtl+S进行保存。接着修改setup.py找到节点启动位置
+    entry_points={
+        'console_scripts': [
+            "node_02 = example_py.node_02:main"
+        ],
+    },
+)
+setup.py这段配置是声明一个ROS2的节点，声明后使用colcon build才能检测到，从而将其添加到install目录下。
+完成上面的工作后，就可以编译运行了。
+
+setuptools版本太高造成，使用下面的指令可以进行版本的回退。
+sudo pip install setuptools==58.2.0 --upgrade
+
+同一个包内创建更多节点，在init_.py同级目录下创建py代码后，
+接着修改setup.py找到节点启动位置
+    entry_points={
+        'console_scripts': [
+            "node_02 = example_py.node_02:main"，
+            "node_04 = example_py.node_04:main"
+        ],
+    },
+)
+-------------------------------------------ros2py---------------------------------------
+
+
+-------------------------------------------ros2接口---------------------------------------
+接口形式：
+a.话题接口格式：xxx.msg
+int64 num
+
+b.服务接口格式：xxx.srv
+int64 a
+int64 b
+---
+int64 sum
+
+c.动作接口格式：xxx.action
+# Goal
+int32 order
+---
+# Result
+int32[] sequence
+---
+# Feedback
+int32[] partial_sequence
+
+接口数据类型
+基础类型有（同时后面加上[]可形成数组）
+bool
+byte
+char
+float32,float64
+int8,uint8
+int16,uint16
+int32,uint32
+int64,uint64
+string
+
+包装类型
+uint32 id
+string image_name
+sensor_msgs/Image
+
+
+创建接口功能包
+ros2 pkg create example_ros2_interfaces --build-type ament_cmake --dependencies rosidl_default_generators geometry_msgs
+依赖rosidl_default_generators必须添加，geometry_msgs视内容情况添加
+创建msg/srv文件夹
+.
+├── CMakeLists.txt
+├── msg
+│   ├── RobotPose.msg
+│   └── RobotStatus.msg
+├── package.xml
+└── srv
+    └── MoveRobot.srv
+
+2 directories, 5 files
+接着修改CMakeLists.txt
+find_package(rosidl_default_generators REQUIRED)
+find_package(geometry_msgs REQUIRED)
+# 添加下面的内容表示生成...接口
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/RobotPose.msg"
+  "msg/RobotStatus.msg"
+  "srv/MoveRobot.srv"
+  DEPENDENCIES geometry_msgs
+)
+接着修改package.xml
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rosidl_default_generators</depend>
+  <depend>geometry_msgs</depend>
+  
+  <member_of_group>rosidl_interface_packages</member_of_group> #添加这一行
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+编译完成后在ws/install/example_ros2_interfaces/include下你应该可以看到C++的头文件。
+在ws/install/example_ros2_interfaces/local/lib/python3.10/dist-packages下应该可以看到Python版本的头文件。
+
+
+在vscode配置引入接口的hpp：
+配置.json文件
+"includePath":[
+	...，
+	"${workspaceFolder}/install/xxx_interfaces/include/**，
+	...
+],
+-------------------------------------------ros2接口---------------------------------------
+
+-------------------------------------------ros2参数---------------------------------------
+参数操作其实就是通过服务通信方式实现的，获取参数列表，set和get操作就是操作相应的服务
+
+参数是节点的一个配置值，你以认为参数是一个节点的设置,参数是由键值对组成的
+ROS2支持的参数值的类型如下：
+bool 和bool[]，布尔类型用来表示开关，比如我们可以控制雷达控制节点，开始扫描和停止扫描。
+int64 和int64[]，整形表示一个数字，含义可以自己来定义，这里我们可以用来表示李四节点写小说的周期值
+float64 和float64[]，浮点型，可以表示小数类型的参数值
+string 和string[]，字符串，可以用来表示雷达控制节点中真实雷达的ip地址
+byte[]，字节数组，这个可以用来表示图片，点云数据等信息
+
+-------------------------------------------ros2参数---------------------------------------
+
+
+-------------------------------------------ros2日志---------------------------------------
+ROS2将日志分为五个级别
+在RCLCPP中通过不同的宏可以实现不同日志级别日志的打印，例程如下：
+RCLCPP_DEBUG(this->get_logger(), "我是DEBUG级别的日志，我被打印出来了!");
+RCLCPP_INFO(this->get_logger(), "我是INFO级别的日志，我被打印出来了!");
+RCLCPP_WARN(this->get_logger(), "我是WARN级别的日志，我被打印出来了!");
+RCLCPP_ERROR(this->get_logger(), "我是ERROR级别的日志，我被打印出来了!");
+RCLCPP_FATAL(this->get_logger(), "我是FATAL级别的日志，我被打印出来了!");
+
+只看INFO以上级别的，ROS2中可以通过已有的API设置日志的级别，RCLCPP中API如下：
+this->get_logger().set_level(log_level);
+
+-------------------------------------------ros2日志---------------------------------------
+
+
+
+-------------------------------------------ros2Action---------------------------------------
+rclcpp_action的create_server使用了三个回调函数，分别用于处理收到目标、收到停止、确认接受执行。
+handle_goal，收到目标，反馈是否可以执行该目标，可以则返回ACCEPT_AND_EXECUTE,不可以则返回REJECT
+handle_cancel，收到取消运行请求，可以则返回ACCEPT，不可以返回REJECT。
+handle_accepted，处理接受请求，当handle_goal中对移动请求ACCEPT后则进入到这里进行执行
+此处单独开了个线程进行执行execute函数，目的是避免阻塞主线程。
+执行函数execute，调用机器人，进行一步步的移动，采用了while循环的形式，不断调用机器人移动并获取机器人的位置，通过feedback进行反馈。
+同时检测任务是否被取消，如顺利执行完成则反馈最终结果。
+代码中还用到了Rate函数来精准控制循环的周期，让其保持为2HZ，关于Rate等流程控制的工具。
+
+
+rclcpp_action的客户端发送请求的时可以指定三个回调函数
+goal_response_callback，目标的响应回调函数。
+feedback_callback，执行过程中进度反馈接收回调函数。
+result_callback，最终结果接收的回调函数
+
+Action在后续的机器人开发中并没那么常用，但是其思想比较重要
+-------------------------------------------ros2Action---------------------------------------
+
+-------------------------------------------ros2通信机制总结---------------------------------------
+1.话题
+话题（Topic）是一种轻量级的通信方式，用于实现发布-订阅模式，即一个节点发布数据，另一个节点订阅数据。
+话题是一种单向的通信方式，发布者发布数据后，无法获知数据是否被订阅者成功接收。话题的数据类型可以是ROS中定义的任意消息类型。
+常见的使用话题实现的场景包括传感器数据的传递、节点间的状态信息交换等。
+
+2.服务
+服务是双向的，提供了一种客户端-服务器模式，即客户端向服务器发送请求，服务器响应请求并返回结果。
+服务可以实现双向通信，并且支持传递任意的ROS消息类型。服务的实现需要定义两个消息类型，一个用于请求，一个用于响应
+。常见的使用服务实现的场景包括节点之间的命令调用、请求数据等。
+
+3.参数
+参数（Parameter）是ROS 2中节点的一种配置机制，它可以用于对节点进行设置。
+参数可以存储整数、浮点数、布尔值、字符串等基本类型数据，也可以存储ROS消息类型。
+参数的读写操作可以通过服务实现。在节点启动时，可以通过ROS参数服务器将参数传递给节点，也可以在运行时动态修改参数。
+常见的使用参数的场景包括节点的配置、调试等。，原理基于服务。
+
+4.动作
+动作（Action）是ROS 2中的高级通信机制，它可以实现异步的双向通信，并且支持取消、暂停、恢复等操作。
+动作通常用于需要执行较长时间的任务，如机器人的导航、物体识别等。
+与服务不同，动作可以通过话题实时发布执行状态、进度等信息，以便客户端监控执行情况。
+动作的实现需要定义三个消息类型，一个用于请求，一个用于响应，一个用于反馈。
+常见的使用动作的场景包括机器人的自主导航、物体抓取等。
+-------------------------------------------ros2通信机制总结---------------------------------------
+
+-------------------------------------------ros2特殊节点;生命周期节点---------------------------------------
+生命周期节点（rclcpp_lifecycle::LifecycleNode）主要有以下几个状态
+未配置状态（Unconfigured） ，节点开始时的第一个状态，并在出现错误后结束。没有执行，其主要目的是错误恢复。
+非活跃状态（Inactivate），节点持有资源（发布者、监听者等）和配置（参数、内部变量），但什么也不做。 没有执行，没有传输，传入的数据可以保存在缓冲区中，但不能读取， 主要目的是允许重新配置。
+活跃状态（Activate）， 正常执行。
+已完成状态（Finalized），节点已被销毁。
+-------------------------------------------ros2特殊节点;生命周期节点---------------------------------------

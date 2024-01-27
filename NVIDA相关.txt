@@ -1,0 +1,17 @@
+显卡驱动安装
+https://blog.csdn.net/Perfect886/article/details/119109380
+
+每隔3s刷新一次显卡信息
+watch -n 3 nvidia-smi
+
+#set cuda environment path
+sudo gedit sudo gedit /etc/profile，最下方添加
+export PATH=/usr/local/cuda-12.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+
+
+
+
+
