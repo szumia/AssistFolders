@@ -1,0 +1,23 @@
+配置全局设置，一般是环境变量
+sudo gedit /etc/profile
+
+运行.run文件
+sudo chmod 777 .run文件
+./文件  运行
+
+
+ubuntu22.04检测不到ttyUSB串口设备：
+sudo dmesg | grep tty 查看原因，显示
+[    0.425064] printk: console [tty0] enabled
+[    1.288554] 00:05: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[  980.188047] usb 2-2.1: FTDI USB Serial Device converter now attached to ttyUSB0
+[  980.872665] usb 2-2.1: usbfs: interface 0 claimed by ftdi_sio while 'brltty' sets config #1
+[  980.876265] ftdi_sio ttyUSB0: FTDI USB Serial Device converter now disconnected from ttyUSB0
+原因： ttyUSB端口，被brltty 的进程挤掉了
+解决方法：执行
+$systemctl stop brltty-udev.service
+$systemctl mask brltty-udev.service
+$systemctl stop brltty.service
+$systemctl disable brltty.service
+重新拔插串口即可
+
