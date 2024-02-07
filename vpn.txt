@@ -30,7 +30,6 @@ https://sockboom.site/auth/register?affid=177284
 
 
 https://www.jianshu.com/p/02e3e8ccfe80
-https://www.varhost.cc/user
 clsh 代理服务器添加与关闭
 查看代理
 env | grep -i proxy
