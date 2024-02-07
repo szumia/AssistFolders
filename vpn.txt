@@ -10,7 +10,13 @@ https://board.gtk.pw/
 clash备用：
 https://board.bagit.eu.org
 https://board.mirror.gtk.pw
-https://www.varhost.cc/user
+部分地区可能已经屏蔽了本站的地址，如果遇到更新失败，或者无法下载配置文件的情况。
+可以将本站的域名，订阅地址中，更换为如下的任一网址，然后再进行尝试。
+镜像站点地址：
+https://board.gtkpw.xyz
+https://board.bagit.eu.org
+https://board.mirror.gtk.pw
+https://board.techfm.eu.org
 链接：https://pan.baidu.com/s/1JEZvfoZSLj9YsXlL1Vb7Bg?pwd=1228 
 提取码：1228
 
@@ -24,6 +30,7 @@ https://sockboom.site/auth/register?affid=177284
 
 
 https://www.jianshu.com/p/02e3e8ccfe80
+https://www.varhost.cc/user
 clsh 代理服务器添加与关闭
 查看代理
 env | grep -i proxy
