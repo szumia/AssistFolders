@@ -23,7 +23,8 @@ Step 6: Install OpenVINO Runtime
 Step1. Create temporary directory  
 ```mkdir neo```  
 Step2. Download all *.deb packages
-```cd neo
+```
+cd neo
 wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-gmmlib_21.3.3_amd64.deb
 wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-core_1.0.9441_amd64.deb
 wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-opencl_1.0.9441_amd64.deb
@@ -31,13 +32,15 @@ wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/inte
 wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-level-zero-gpu_1.2.21782_amd64.deb
 ```  
 Step3. Verify sha256 sums for packages
-```wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/ww48.sum
+```
+wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/ww48.sum
 sha256sum -c ww48.sum
 ```    
 Step4. Install all packages as root  
 ```sudo dpkg -i *.deb```  
 Step5. ha256 sums for packages  
-```b9c157befe15e3b8d2f93a83c4409e2e069214f07e4a41d6b9c60e30bee836f4 intel-gmmlib_21.3.3_amd64.deb
+```
+b9c157befe15e3b8d2f93a83c4409e2e069214f07e4a41d6b9c60e30bee836f4 intel-gmmlib_21.3.3_amd64.deb
 db849b1b0e56ba0447ad344d6647435f6518c5fd3e546d02363e0cd2fb0b28e8 intel-igc-core_1.0.9441_amd64.deb
 8c2c4813f8446befcc4acc251deb00ba99231fda37634a3ba54c2ec334de816a intel-igc-opencl_1.0.9441_amd64.deb
 434d82140cde7f3fe0e306906d61bd79b921b464bdfabc1c47e26ef646fb2a51 intel-level-zero-gpu_1.2.21782_amd64.deb
