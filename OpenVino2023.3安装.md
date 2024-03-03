@@ -45,7 +45,13 @@ db849b1b0e56ba0447ad344d6647435f6518c5fd3e546d02363e0cd2fb0b28e8 intel-igc-core_
 8c2c4813f8446befcc4acc251deb00ba99231fda37634a3ba54c2ec334de816a intel-igc-opencl_1.0.9441_amd64.deb
 434d82140cde7f3fe0e306906d61bd79b921b464bdfabc1c47e26ef646fb2a51 intel-level-zero-gpu_1.2.21782_amd64.deb
 482842bb090e615168c8061395dd541702db27d95852bc9c62a6ea8303e36f20 intel-opencl-icd_21.48.21782_amd64.deb
-```  
+```
+
+
+### 3.查看Intel设备GPU占用
+```sudo apt-get install intel-gpu-tools```  
+```sudo intel_gpu_top```  
+
 ### 相关链接
 [OpenVino官网](https://docs.openvino.ai/2023.3/home.html)  
 [Install OpenVino use APT](https://docs.openvino.ai/2023.3/openvino_docs_install_guides_overview.html?VERSION=v_2023_3_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)  
