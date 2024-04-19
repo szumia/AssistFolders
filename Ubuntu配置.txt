@@ -21,3 +21,9 @@ $systemctl stop brltty.service
 $systemctl disable brltty.service
 重新拔插串口即可
 
+
+双系统时间混乱解决
+https://zhuanlan.zhihu.com/p/492885761
+在ubuntu终端输入：
+timedatectl set-local-rtc 1
+
