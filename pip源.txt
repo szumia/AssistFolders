@@ -1,8 +1,7 @@
 换pip国内源
 https://zhuanlan.zhihu.com/p/628870519
 清华pip镜像
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 如果临时使用可以使用
 使用pip的时候在后面加上-i参数，指定pip源：
-pip install xxx -i https://pypi.tuna.tsinghua.edu.cn
-
+pip install xxx -i https://pypi.tuna.tsinghua.edu.cn/simple
