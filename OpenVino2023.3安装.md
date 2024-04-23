@@ -1,22 +1,22 @@
 ## OpenVino2023.3安装
-##### Writtern by mia on 2024 Feb 5th
-### [1.Install use apt](https://docs.openvino.ai/2023.3/openvino_docs_install_guides_overview.html?VERSION=v_2023_3_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)
+##### Writtern by mia on 2024 Feb 5th（Newly updated on 2024 Arp 23th）
+### [1.Install use apt for Linux](https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?VERSION=v_2024_0_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)
 Step 1: Download the GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB. You can also use the following command  
 ```wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB```  
 Step 2: Add this key to the system keyring  
 ```sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB```  
 Step 3: Add the repository via the following command  
 * Ubuntu 22  
-```echo "deb https://apt.repos.intel.com/openvino/2023 ubuntu22 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2023.list```
+```echo "deb https://apt.repos.intel.com/openvino/2024 ubuntu22 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2024.list```
 * Ubuntu 20  
-```echo "deb https://apt.repos.intel.com/openvino/2023 ubuntu20 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2023.list```  
+```echo "deb https://apt.repos.intel.com/openvino/2024 ubuntu20 main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2024.list```  
 
 Step 4: Update the list of packages via the update command  
 ```sudo apt update```  
 Step 5: Verify that the APT repository is properly set up. Run the apt-cache command to see a list of all available OpenVINO packages and components  
 ```apt-cache search openvino```  
 Step 6: Install OpenVINO Runtime  
-```sudo apt install openvino-2023.3.0```  
+```sudo apt install openvino-2024.0.0```  
 
 
 ### [2.Install intel runtime](https://github.com/intel/compute-runtime/releases/tag/21.48.21782)
