@@ -25,26 +25,32 @@ Step1. Create temporary directory
 Step2. Download all *.deb packages
 ```
 cd neo
-wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-gmmlib_21.3.3_amd64.deb
-wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-core_1.0.9441_amd64.deb
-wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-opencl_1.0.9441_amd64.deb
-wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-opencl-icd_21.48.21782_amd64.deb
-wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-level-zero-gpu_1.2.21782_amd64.deb
+wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.16238.4/intel-igc-core_1.0.16238.4_amd64.deb
+wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.16238.4/intel-igc-opencl_1.0.16238.4_amd64.deb
+wget https://github.com/intel/compute-runtime/releases/download/24.09.28717.12/intel-level-zero-gpu-dbgsym_1.3.28717.12_amd64.ddeb
+wget https://github.com/intel/compute-runtime/releases/download/24.09.28717.12/intel-level-zero-gpu_1.3.28717.12_amd64.deb
+wget https://github.com/intel/compute-runtime/releases/download/24.09.28717.12/intel-opencl-icd-dbgsym_24.09.28717.12_amd64.ddeb
+wget https://github.com/intel/compute-runtime/releases/download/24.09.28717.12/intel-opencl-icd_24.09.28717.12_amd64.deb
+wget https://github.com/intel/compute-runtime/releases/download/24.09.28717.12/libigdgmm12_22.3.17_amd64.deb
 ```  
 Step3. Verify sha256 sums for packages
 ```
-wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/ww48.sum
-sha256sum -c ww48.sum
+wget https://github.com/intel/compute-runtime/releases/download/24.09.28717.12/ww09.sum
+sha256sum -c ww09.sum
 ```    
 Step4. Install all packages as root  
 ```sudo dpkg -i *.deb```  
+In case of installation problems, please install required dependencies, for example:  
+```apt install ocl-icd-libopencl1```  
 Step5. ha256 sums for packages  
 ```
-b9c157befe15e3b8d2f93a83c4409e2e069214f07e4a41d6b9c60e30bee836f4 intel-gmmlib_21.3.3_amd64.deb
-db849b1b0e56ba0447ad344d6647435f6518c5fd3e546d02363e0cd2fb0b28e8 intel-igc-core_1.0.9441_amd64.deb
-8c2c4813f8446befcc4acc251deb00ba99231fda37634a3ba54c2ec334de816a intel-igc-opencl_1.0.9441_amd64.deb
-434d82140cde7f3fe0e306906d61bd79b921b464bdfabc1c47e26ef646fb2a51 intel-level-zero-gpu_1.2.21782_amd64.deb
-482842bb090e615168c8061395dd541702db27d95852bc9c62a6ea8303e36f20 intel-opencl-icd_21.48.21782_amd64.deb
+c6ebef32424871f53e228bd486644b1b9118fc8e749c72fd18e9d054b660b0e1 intel-igc-core_1.0.16238.4_amd64.deb
+5c9f01cb04961af8da1fc1aa071f2f35655053afef901032bc4615dffa06b451 intel-igc-opencl_1.0.16238.4_amd64.deb
+b1c0007f0e2ec1193c33d4420ac7a7d94ecdb0f827e9ce8f33ad038008163a68 intel-level-zero-gpu-dbgsym_1.3.28717.12_amd64.ddeb
+fd914c2c8005e6b020b4beeeaf14e3f66526095d3d14a624b3a6eac3c7799f8b intel-level-zero-gpu_1.3.28717.12_amd64.deb
+77320a90217b30929751991ce61975c2b90950a1afc9264672e94d3f594809fa intel-opencl-icd-dbgsym_24.09.28717.12_amd64.ddeb
+3df24e07e3f7ff5539d82eb1d9426e4ccf02813f76cd08e9292d4cb40866b20f intel-opencl-icd_24.09.28717.12_amd64.deb
+883ffebb7c7d8603735b6e6028300601905a8af567f6582da8759e966206f72f libigdgmm12_22.3.17_amd64.deb
 ```
 
 
