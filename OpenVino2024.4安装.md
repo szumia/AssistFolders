@@ -1,4 +1,4 @@
-## OpenVino2023.3安装
+## OpenVino2024.4安装
 ##### Writtern by mia on 2024 Feb 5th（Newly updated on 2024 Arp 23th）
 ### [1.Install use apt for Linux](https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?VERSION=v_2024_0_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)
 Step 1: Download the GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB. You can also use the following command  
@@ -19,7 +19,7 @@ Step 6: Install OpenVINO Runtime
 ```sudo apt install openvino-2024.0.0```  
 
 
-### [2.Install intel runtime](https://github.com/intel/compute-runtime/releases/tag/21.48.21782)
+### [2.Install intel runtime 24.13.29138.7](https://github.com/intel/compute-runtime/releases)
 Step1. Create temporary directory  
 ```mkdir neo```  
 Step2. Download all *.deb packages
