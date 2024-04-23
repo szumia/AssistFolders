@@ -1,4 +1,4 @@
-## OpenVino2024.4安装
+## OpenVino2024.4 for Linux安装
 ##### Writtern by mia on 2024 Feb 5th（Newly updated on 2024 Arp 23th）
 ### [1.Install use apt for Linux](https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?VERSION=v_2024_0_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)
 Step 1: Download the GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB. You can also use the following command  
@@ -59,6 +59,6 @@ fd914c2c8005e6b020b4beeeaf14e3f66526095d3d14a624b3a6eac3c7799f8b intel-level-zer
 ```sudo intel_gpu_top```  
 
 ### 相关链接
-[OpenVino官网](https://docs.openvino.ai/2023.3/home.html)  
-[Install OpenVino use APT](https://docs.openvino.ai/2023.3/openvino_docs_install_guides_overview.html?VERSION=v_2023_3_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)  
+[OpenVino官网](https://docs.openvino.ai/2024/get-started/install-openvino/install-openvino-archive-linux.html)  
+[Install OpenVino use APT](https://www.intel.cn/content/www/cn/zh/developer/tools/openvino-toolkit/download.html?VERSION=v_2024_0_0&OP_SYSTEM=LINUX&DISTRIBUTION=APT)  
 [intel-compute-runtime](https://github.com/intel/compute-runtime/releases)  
