@@ -41,7 +41,7 @@ sha256sum -c ww09.sum
 Step4. Install all packages as root  
 ```sudo dpkg -i *.deb```  
 In case of installation problems, please install required dependencies, for example:  
-```apt install ocl-icd-libopencl1```  
+```sudo apt install ocl-icd-libopencl1```  
 Step5. ha256 sums for packages  
 ```
 c6ebef32424871f53e228bd486644b1b9118fc8e749c72fd18e9d054b660b0e1 intel-igc-core_1.0.16238.4_amd64.deb
